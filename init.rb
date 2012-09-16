@@ -1,8 +1,8 @@
 require 'redmine'
-require 'dispatcher'
+#require 'dispatcher'
 require_dependency 'versions_hook'
 
-Dispatcher.to_prepare do
+Rails.configuration.to_prepare do
   require_dependency 'version'
   require 'version_patch'
   Version.send( :include, VersionPatch)
