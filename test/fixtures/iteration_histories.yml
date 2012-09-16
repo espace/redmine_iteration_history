@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  version_id: 1
+  old_due_date: 2010-07-18
+  new_due_date: 2010-07-18
+  reason: MyText
+
+two:
+  version_id: 1
+  old_due_date: 2010-07-18
+  new_due_date: 2010-07-18
+  reason: MyText

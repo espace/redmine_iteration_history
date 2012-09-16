@@ -1,0 +1,16 @@
+<div id="change_reason" style="display:none;">
+	<p>
+    <label for="change_reason"><%=l(:label_change_reason)%><span class="required"> *</span></label>
+    <textarea id="reason" rows="5" cols="30" name="version[change_reason]"></textarea>
+  </p>
+</div>
+<input id="old_date" type="hidden" name="old_date" value="<%=version.effective_date%>" />
+<script>
+
+	function showReasonInput(){
+    if (($('old_date').value!="") && $('version_effective_date').value !=$('old_date').value)
+      Element.show('change_reason');
+	  else
+      Element.hide('change_reason');
+    }
+</script>

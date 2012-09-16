@@ -1,0 +1,7 @@
+# English strings go here for Rails i18n
+en:
+  due_history: "Due History"
+  label_change_reason: "Reason for changing due date"
+  label_due_history_link: "View Due History"
+  label_due_delayed: "Delayed for {{value}}"
+  label_earlier_due: "Earlier {{value}}"

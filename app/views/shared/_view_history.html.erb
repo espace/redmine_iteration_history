@@ -1,0 +1,3 @@
+<% if User.current.allowed_to?({:controller =>"iterations_history" , :action => "index"}, version.project, :global =>false)%>
+  <%=link_to l(:label_due_history_link),{:controller=>"iterations_history",:action=>"index",:id=>version.id},{:style=>"position: absolute; top: 102pt; left: 160pt;"} %>
+<%end%>
