@@ -6,7 +6,7 @@ module VersionPatch
     base.class_eval do
       unloadable
       has_many :iteration_histories,:dependent=>:delete_all
-      after_save :create_history
+      after_update :create_history
       attr_accessor :change_reason
     end
   end
