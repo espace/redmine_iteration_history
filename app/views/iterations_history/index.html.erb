@@ -3,7 +3,7 @@
 <% unless @due_history.empty? %>
   <div class="journal">
 	  <% @due_history.each do |d| -%>
-      <h4><%= l(:label_updated_time, time_tag(d.updated_at)) %>.</h4>
+      <h4><%= l(:label_updated_time, time_tag(d.updated_at)).html_safe %>.</h4>
 	    <ul>
 	      <%unless d.old_due_date.blank?%>
 	        <li>Changed from <%=d.old_due_date%> to <%=d.new_due_date%> ( <%= due_date_distance_in_words(d.old_due_date,d.new_due_date) %> )</li>

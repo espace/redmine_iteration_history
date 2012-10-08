@@ -8,9 +8,14 @@
 <script>
 
 	function showReasonInput(){
-    if (($('old_date').value!="") && $('version_effective_date').value !=$('old_date').value)
+    Element = $('#change_reason');
+    if (($('#old_date').val()!="") && $('#version_effective_date').val() !=$('#old_date').val())
       Element.show('change_reason');
 	  else
       Element.hide('change_reason');
     }
+
+  $('#version_effective_date').change(function(){
+    showReasonInput();
+  });  
 </script>
