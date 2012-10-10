@@ -1,7 +1,4 @@
 require 'redmine'
-#require 'dispatcher'
-
-require "#{File.join(Rails.root, 'plugins/redmine_iteration_history/app/controllers')}/versions_controller.rb"
 
 require_dependency 'versions_hook'
 
@@ -20,6 +17,7 @@ end
 
 Redmine::AccessControl.map do |map|
   map.project_module :iterations_tracking do |map|
-    map.permission :view_iteration_due_history, {:iterations_history => [:index]} ,:require => :member  
+    map.permission :view_iteration_due_history, {:iterations_history => [:index],
+                                                 :subversions => [:update]} ,:require => :member  
   end
 end
