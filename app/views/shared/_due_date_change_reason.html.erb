@@ -9,7 +9,7 @@
 
 	function showReasonInput(){
     Element = $('#change_reason');
-    if (($('#old_date').val()!="") && $('#version_effective_date').val() !=$('#old_date').val())
+    if ($('#version_effective_date').val() !=$('#old_date').val())
       Element.show('change_reason');
 	  else
       Element.hide('change_reason');
