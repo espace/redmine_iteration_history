@@ -23,7 +23,6 @@ class SubversionsController < VersionsController
       attributes.delete('sharing') unless @version.allowed_sharings.include?(attributes['sharing'])
       @version.safe_attributes = attributes
       @version.change_reason = attributes[:change_reason] unless attributes[:change_reason].blank?
-      puts @version.changes.inspect
       if @version.save
         respond_to do |format|
           format.html {
@@ -46,14 +45,6 @@ private
     @project = Project.find(params[:project_id])
   rescue ActiveRecord::RecordNotFound
     render_404
-  end
-
-  def retrieve_selected_tracker_ids(selectable_trackers, default_trackers=nil)
-    if ids = params[:tracker_ids]
-      @selected_tracker_ids = (ids.is_a? Array) ? ids.collect { |id| id.to_i.to_s } : ids.split('/').collect { |id| id.to_i.to_s }
-    else
-      @selected_tracker_ids = (default_trackers || selectable_trackers).collect {|t| t.id.to_s }
-    end
   end
 
 end
