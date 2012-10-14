@@ -10,16 +10,19 @@ class SubversionsController < VersionsController
   helper :projects
 
   def validate_change_reason_field
-     if !params[:old_date].blank? && params[:old_date]!=params[:version][:effective_date] && params[:version][:change_reason]==""
-       flash[:error]="Please specify a reason for changing the due date."
-       redirect_to :controller => 'versions', :action => 'edit'
-     end 
+    if !params[:old_date].blank? && params[:old_date]!=params[:version][:effective_date] && params[:version][:change_reason]==""
+      flash[:error]="Please specify a reason for changing the due date."
+      redirect_to :controller => 'versions', :action => 'edit'
+    end 
   end
 
   def update
     @version = Version.find_by_id params[:id]
     if request.put? && params[:version]
       attributes = params[:version].dup
+      if params[:old_date].blank? 
+        attributes[:change_reason]='initial date'
+      end
       attributes.delete('sharing') unless @version.allowed_sharings.include?(attributes['sharing'])
       @version.safe_attributes = attributes
       @version.change_reason = attributes[:change_reason] unless attributes[:change_reason].blank?
